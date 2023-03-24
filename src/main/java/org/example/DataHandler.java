@@ -9,7 +9,7 @@ class DataHandler {
         System.out.println("Reading post mission targets array\n" + Arrays.toString(postMissionTargetsArray));
         //check how many targets were added
         int numberOfTargetsAdded = (postMissionTargetsArray.length - preMissionTargetsArray.length) / 6;
-        System.out.println("Number of targets added between last mission: " + numberOfTargetsAdded);
+        System.out.println("Number of targets added since last mission: " + numberOfTargetsAdded);
         if(numberOfTargetsAdded==0){
             System.out.println("No new targets added, or file reached its size limit.");
             return postMissionTargetsArray;
@@ -50,13 +50,6 @@ class DataHandler {
         for(int i=0; i<6; i++) {
             destinationArray[2 + targetOffset * 6 + i] = targetData[i];
         }
-    }
-
-    static boolean isTargetDataSame (Byte[] targetData1, Byte[] targetData2) {
-        for(int i=0; i<6; i++) {
-            if(!targetData1[i].equals(targetData2[i])) return false;
-        }
-        return true;
     }
 
 }
