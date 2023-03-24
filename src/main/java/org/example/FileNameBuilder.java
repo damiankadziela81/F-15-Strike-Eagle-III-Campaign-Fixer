@@ -35,7 +35,7 @@ class FileNameBuilder {
                 System.out.println("Enter valid choice.");
             }
         }
-        System.out.println("Current file being modified: " + sb.toString());
+        System.out.println("File name constructed: " + sb.toString());
         return sb.toString();
     }
 }
