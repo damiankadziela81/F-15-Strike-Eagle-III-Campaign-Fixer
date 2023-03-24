@@ -20,7 +20,7 @@ class FileNameBuilder {
                 }
             }
         while(sb.capacity()<3){
-            System.out.println("Input your pilot slot: [0-7].");
+            System.out.println("Input your pilot slot: [0-7] - (0 - left most locker ... 7 - right most locker).");
             try{
                 slot = scanner.nextInt();
             } catch (InputMismatchException e) {
@@ -35,7 +35,7 @@ class FileNameBuilder {
                 System.out.println("Enter valid choice.");
             }
         }
-        System.out.println("File name constructed: " + sb.toString());
+        System.out.println("Looking for a file: " + sb.toString());
         return sb.toString();
     }
 }
