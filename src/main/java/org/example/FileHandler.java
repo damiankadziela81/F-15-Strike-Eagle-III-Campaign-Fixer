@@ -1,6 +1,7 @@
 package org.example;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -8,7 +9,7 @@ import java.util.ArrayList;
 class FileHandler {
 
     static Byte[] fileToArray(String fileName){
-        ArrayList<Byte> contentList = new ArrayList<Byte>();
+        ArrayList<Byte> contentList = new ArrayList<>();
         try {
             FileInputStream fileInputStream = new FileInputStream(fileName);
             int content;
@@ -16,6 +17,8 @@ class FileHandler {
                 contentList.add((byte) content);
             }
             fileInputStream.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("File " + fileName + " not found!");
         } catch (IOException e) {
             e.printStackTrace();
         }
