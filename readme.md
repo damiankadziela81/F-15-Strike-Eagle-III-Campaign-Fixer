@@ -27,5 +27,6 @@ After making a backup you can proceed to fly another mission. When finished you 
 |0x2 | 1st record / 6 bytes      |
 |0x8 | 2nd record / 6 bytes      |
 |... | ...                       |
+
 Note: Number of records is dynamic - max is 29 (max file size = 2 + 29 * 6 = 176 bytes).
 
