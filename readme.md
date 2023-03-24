@@ -20,5 +20,12 @@ After flying first mission in the campaign *.EXP file will be created inside gam
 You can run the program after finishing your first mission. First step will be to create backup - press `1`. You will be asked to provide more data - which Campaign you're currently flying and which pilot slot your pilot occupies. This is needed for finding the correct file.
 
 After making a backup you can proceed to fly another mission. When finished you need to exit the game and run the program and select `2` to reconstruct the target data based on current file and the backup. Follow prompts and provide data as needed. After reconstructing the target data backup will be done automatically (old one will be overwritten) so you may fly another mission right away.
-
+## EXP file structure
+|offset| content / size            |
+|------|---------------------------|
+|0x0 | number of records / 2 bytes |
+|0x2 | 1st record / 6 bytes      |
+|0x8 | 2nd record / 6 bytes      |
+|... | ...                       |
+Note: Number of records is dynamic - max is 29 (max file size = 2 + 29 * 6 = 176 bytes).
 
