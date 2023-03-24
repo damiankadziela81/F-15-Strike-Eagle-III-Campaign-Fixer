@@ -1,5 +1,6 @@
 package org.example;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -19,7 +20,16 @@ public class Main {
                     FileHandler.makeBackup(fileName,"backup" + fileName);
                 }
                 case "2" -> {
-                    System.out.println("fixing file...");
+                    String fileName = FileNameBuilder.buildFileName();
+                    Byte[] arrayFixed = DataHandler.reconstructTargets(
+                            FileHandler.fileToArray(fileName),
+                            FileHandler.fileToArray("backup"+fileName)
+                    );
+                    System.out.println(Arrays.toString(arrayFixed));
+                    //create new file from reconstructed data
+                    FileHandler.arrayToFile(arrayFixed,fileName);
+                    //backup the new file
+                    FileHandler.makeBackup(fileName,"backup" + fileName);
                 }
                 case "q" -> System.exit(0);
                 default -> System.out.println("Invalid input, please try again.");
