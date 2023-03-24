@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="CampaignFixer:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/CampaignFixer_jar</output-path>
+    <root id="archive" name="CampaignFixer.jar">
+      <element id="module-output" name="CampaignFixer" />
+    </root>
+  </artifact>
+</component>
