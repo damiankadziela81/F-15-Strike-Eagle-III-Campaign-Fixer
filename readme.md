@@ -14,6 +14,8 @@ After building the jar file from the source, you must run it from the game folde
 To run it from the terminal:
 `java -jar campaignfixer.jar`
 
+Or download latest release and run CF.bat from within game folder.
+
 ## Working with the game
 After flying first mission in the campaign *.EXP file will be created inside game folder. Depending on the campaign and the locker your pilot uses in the roster the file name will be different.
 
