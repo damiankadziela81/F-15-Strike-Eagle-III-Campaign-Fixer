@@ -9,11 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e7a9c4e7-f7e5-4073-aa89-7e155546f243" name="Changes" comment="refactoring&#10;- removed the loop (single record handling) now all the records are written in a one go&#10;bugfix - if amount of targets added was &gt; targets in pre-mission file it would cause array out of bounds exception">
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/DataHandlerTest.java" afterDir="false" />
+    <list default="true" id="e7a9c4e7-f7e5-4073-aa89-7e155546f243" name="Changes" comment="Added tests">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/DataHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/DataHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +53,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "project.structure.last.edited": "Project",
+    "project.structure.last.edited": "SDKs",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "preferences.lookFeel"
@@ -68,8 +67,21 @@
       <recent name="org.example" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.DataHandlerTest.shouldReconstructTargetsWhenTargetsAddedNotGreaterThanPreMissionTargets">
-    <configuration name="DataHandlerTest.shouldCalculateNumberOfTargetsAdded" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.Main" />
+      <module name="CampaignFixer" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DataHandlerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CampaignFixer" />
       <extension name="coverage">
         <pattern>
@@ -79,8 +91,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="org.example" />
       <option name="MAIN_CLASS_NAME" value="org.example.DataHandlerTest" />
-      <option name="METHOD_NAME" value="shouldCalculateNumberOfTargetsAdded" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -133,29 +144,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DataHandlerTest.shouldReturnTargetData" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="CampaignFixer" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.example.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.example" />
-      <option name="MAIN_CLASS_NAME" value="org.example.DataHandlerTest" />
-      <option name="METHOD_NAME" value="shouldReturnTargetData" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.DataHandlerTest" />
         <item itemvalue="JUnit.DataHandlerTest.shouldReconstructTargetsWhenTargetsAddedNotGreaterThanPreMissionTargets" />
         <item itemvalue="JUnit.DataHandlerTest.shouldReconstructTargetsWhenTargetsAddedGreaterThanPreMissionTargets" />
         <item itemvalue="JUnit.DataHandlerTest.shouldInputTargetData" />
-        <item itemvalue="JUnit.DataHandlerTest.shouldReturnTargetData" />
-        <item itemvalue="JUnit.DataHandlerTest.shouldCalculateNumberOfTargetsAdded" />
       </list>
     </recent_temporary>
   </component>
@@ -266,7 +261,21 @@
       <option name="project" value="LOCAL" />
       <updated>1679919751867</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Added precaution for the method to not return negative number - though it never should've happened due to earlier check in the Main class">
+      <created>1679927641468</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1679927641468</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Added tests">
+      <created>1679927673879</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1679927673879</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -294,6 +303,8 @@
     <MESSAGE value="reformatted readme" />
     <MESSAGE value="Added checks if: &#10;- targets record has reached max capacity&#10;- backup is larger than current record (error)" />
     <MESSAGE value="refactoring&#10;- removed the loop (single record handling) now all the records are written in a one go&#10;bugfix - if amount of targets added was &gt; targets in pre-mission file it would cause array out of bounds exception" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactoring&#10;- removed the loop (single record handling) now all the records are written in a one go&#10;bugfix - if amount of targets added was &gt; targets in pre-mission file it would cause array out of bounds exception" />
+    <MESSAGE value="Added precaution for the method to not return negative number - though it never should've happened due to earlier check in the Main class" />
+    <MESSAGE value="Added tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added tests" />
   </component>
 </project>

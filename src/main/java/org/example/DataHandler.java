@@ -12,10 +12,6 @@ class DataHandler {
         //check how many targets were added
         int targetsAddedAmount = calculateNumberOfTargetsAdded(preMissionTargetsArray, postMissionTargetsArray);
         System.out.println("Number of targets added since last mission: " + targetsAddedAmount);
-        if (targetsAddedAmount == 0) {
-            System.out.println("No new targets added.");
-            return postMissionTargetsArray;
-        }
         //step 1 - move newly added targets to the end of the array filled with empty records
         int desiredTargetRecordOffset = (preMissionTargetsArray.length - TARGET_DATABLOCK_OFFSET) / TARGET_BLOCK_SIZE;
         Byte[] targetData = getTargetData(postMissionTargetsArray, 0, targetsAddedAmount);

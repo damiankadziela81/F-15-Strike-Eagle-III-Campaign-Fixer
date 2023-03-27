@@ -38,7 +38,6 @@ class DataHandlerTest {
         assertEquals(0,result3);
     }
 
-
     @Test
     void shouldReturnTargetData() {
         //given
