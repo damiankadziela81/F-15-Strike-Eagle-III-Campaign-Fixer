@@ -51,6 +51,7 @@ class DataHandler {
     }
 
     static int calculateNumberOfTargetsAdded(Byte[] preMissionArray, Byte[] postMissionArray) {
+        if(preMissionArray.length > postMissionArray.length) return 0;
         return (postMissionArray.length - preMissionArray.length) / TARGET_BLOCK_SIZE;
     }
 }
