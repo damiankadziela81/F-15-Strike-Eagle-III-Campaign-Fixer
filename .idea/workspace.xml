@@ -9,14 +9,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e7a9c4e7-f7e5-4073-aa89-7e155546f243" name="Changes" comment="Added flow logic to [2] menu item - fix campaign file">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/CampaignFixer_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+    <list default="true" id="e7a9c4e7-f7e5-4073-aa89-7e155546f243" name="Changes" comment="refactoring&#10;- removed the loop (single record handling) now all the records are written in a one go&#10;bugfix - if amount of targets added was &gt; targets in pre-mission file it would cause array out of bounds exception">
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/DataHandlerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/DataHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/DataHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/FileHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/FileHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/FileNameBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/FileNameBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,10 +24,16 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -49,11 +52,113 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "project.structure.last.edited": "Artifacts",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2"
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.lookFeel"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="org.example" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.DataHandlerTest.shouldReconstructTargetsWhenTargetsAddedNotGreaterThanPreMissionTargets">
+    <configuration name="DataHandlerTest.shouldCalculateNumberOfTargetsAdded" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CampaignFixer" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.example" />
+      <option name="MAIN_CLASS_NAME" value="org.example.DataHandlerTest" />
+      <option name="METHOD_NAME" value="shouldCalculateNumberOfTargetsAdded" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DataHandlerTest.shouldInputTargetData" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CampaignFixer" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.example" />
+      <option name="MAIN_CLASS_NAME" value="org.example.DataHandlerTest" />
+      <option name="METHOD_NAME" value="shouldInputTargetData" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DataHandlerTest.shouldReconstructTargetsWhenTargetsAddedGreaterThanPreMissionTargets" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CampaignFixer" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.example" />
+      <option name="MAIN_CLASS_NAME" value="org.example.DataHandlerTest" />
+      <option name="METHOD_NAME" value="shouldReconstructTargetsWhenTargetsAddedGreaterThanPreMissionTargets" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DataHandlerTest.shouldReconstructTargetsWhenTargetsAddedNotGreaterThanPreMissionTargets" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CampaignFixer" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.example" />
+      <option name="MAIN_CLASS_NAME" value="org.example.DataHandlerTest" />
+      <option name="METHOD_NAME" value="shouldReconstructTargetsWhenTargetsAddedNotGreaterThanPreMissionTargets" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DataHandlerTest.shouldReturnTargetData" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CampaignFixer" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.example" />
+      <option name="MAIN_CLASS_NAME" value="org.example.DataHandlerTest" />
+      <option name="METHOD_NAME" value="shouldReturnTargetData" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.DataHandlerTest.shouldReconstructTargetsWhenTargetsAddedNotGreaterThanPreMissionTargets" />
+        <item itemvalue="JUnit.DataHandlerTest.shouldReconstructTargetsWhenTargetsAddedGreaterThanPreMissionTargets" />
+        <item itemvalue="JUnit.DataHandlerTest.shouldInputTargetData" />
+        <item itemvalue="JUnit.DataHandlerTest.shouldReturnTargetData" />
+        <item itemvalue="JUnit.DataHandlerTest.shouldCalculateNumberOfTargetsAdded" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -84,7 +189,84 @@
       <option name="project" value="LOCAL" />
       <updated>1679681797687</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Fixed some texts, removed unused method">
+      <created>1679686776199</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1679686776199</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Added catch for FileNotFoundException when converting file to an array">
+      <created>1679686848387</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1679686848387</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Fixed some console output texts">
+      <created>1679686898114</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1679686898114</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Removed the while loop since you only use either option anyway and quit. Added checks to see if there was no file present - arrays are of length 0, before handing them to reconstructTargets method.">
+      <created>1679687087464</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1679687087464</updated>
+    </task>
+    <task id="LOCAL-00008" summary="n/a">
+      <created>1679687119575</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1679687119575</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Created readme file">
+      <created>1679689127309</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1679689127309</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Added EXP file structure in the readme">
+      <created>1679689817895</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1679689817895</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Added EXP file structure in the readme">
+      <created>1679689868098</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1679689868098</updated>
+    </task>
+    <task id="LOCAL-00012" summary="reformatted readme">
+      <created>1679690195611</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1679690195611</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Added checks if: &#10;- targets record has reached max capacity&#10;- backup is larger than current record (error)">
+      <created>1679919177963</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1679919177963</updated>
+    </task>
+    <task id="LOCAL-00014" summary="refactoring&#10;- removed the loop (single record handling) now all the records are written in a one go&#10;bugfix - if amount of targets added was &gt; targets in pre-mission file it would cause array out of bounds exception">
+      <created>1679919751867</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1679919751867</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -102,6 +284,16 @@
     <MESSAGE value="Init commit" />
     <MESSAGE value="Delegated data handling methods to a new class" />
     <MESSAGE value="Added flow logic to [2] menu item - fix campaign file" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added flow logic to [2] menu item - fix campaign file" />
+    <MESSAGE value="Fixed some texts, removed unused method" />
+    <MESSAGE value="Added catch for FileNotFoundException when converting file to an array" />
+    <MESSAGE value="Fixed some console output texts" />
+    <MESSAGE value="Removed the while loop since you only use either option anyway and quit. Added checks to see if there was no file present - arrays are of length 0, before handing them to reconstructTargets method." />
+    <MESSAGE value="n/a" />
+    <MESSAGE value="Created readme file" />
+    <MESSAGE value="Added EXP file structure in the readme" />
+    <MESSAGE value="reformatted readme" />
+    <MESSAGE value="Added checks if: &#10;- targets record has reached max capacity&#10;- backup is larger than current record (error)" />
+    <MESSAGE value="refactoring&#10;- removed the loop (single record handling) now all the records are written in a one go&#10;bugfix - if amount of targets added was &gt; targets in pre-mission file it would cause array out of bounds exception" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactoring&#10;- removed the loop (single record handling) now all the records are written in a one go&#10;bugfix - if amount of targets added was &gt; targets in pre-mission file it would cause array out of bounds exception" />
   </component>
 </project>
