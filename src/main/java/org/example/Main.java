@@ -32,8 +32,12 @@ public class Main {
                     System.out.println("Target data array has reached max limit of 29 records.");
                     break;
                 }
+                if (targetsArray.length == backupTargetsArray.length) {
+                    System.out.println("No new targets added since last mission.");
+                    break;
+                }
                 if (targetsArray.length < backupTargetsArray.length) {
-                    System.out.println("Error: current file size < backup file size! ");
+                    System.out.println("Error: current file size < backup file size!");
                     break;
                 }
                 Byte[] arrayFixed = DataHandler.reconstructTargets(targetsArray, backupTargetsArray);
