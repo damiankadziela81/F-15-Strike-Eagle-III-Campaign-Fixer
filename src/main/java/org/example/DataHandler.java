@@ -3,53 +3,54 @@ package org.example;
 import java.util.Arrays;
 
 class DataHandler {
+    private static final int TARGET_BLOCK_SIZE = 6;
+    private static final int TARGET_DATABLOCK_OFFSET = 2;
 
     static Byte[] reconstructTargets(Byte[] postMissionTargetsArray, Byte[] preMissionTargetsArray) {
         System.out.println("Reading pre mission targets array\n" + Arrays.toString(preMissionTargetsArray));
         System.out.println("Reading post mission targets array\n" + Arrays.toString(postMissionTargetsArray));
         //check how many targets were added
-        int numberOfTargetsAdded = (postMissionTargetsArray.length - preMissionTargetsArray.length) / 6;
-        System.out.println("Number of targets added since last mission: " + numberOfTargetsAdded);
-        if(numberOfTargetsAdded==0){
-            System.out.println("No new targets added, or file reached its size limit.");
+        int targetsAddedAmount = calculateNumberOfTargetsAdded(preMissionTargetsArray, postMissionTargetsArray);
+        System.out.println("Number of targets added since last mission: " + targetsAddedAmount);
+        if (targetsAddedAmount == 0) {
+            System.out.println("No new targets added.");
             return postMissionTargetsArray;
         }
-        //reconstruct targets
-        int numberOfTargetsToMove = numberOfTargetsAdded;
-        int iterationGetTargetOffset = 0;
-        int iterationInputTargetOffset = (postMissionTargetsArray.length - 2) / 6 - numberOfTargetsAdded;
-        while (numberOfTargetsToMove>0) {
-            //step 1 - move newly added targets to postMissionArray to the end of the array
-            Byte[] targetData = getTargetData(postMissionTargetsArray, iterationGetTargetOffset);
-            inputTargetData(targetData,postMissionTargetsArray, iterationInputTargetOffset);
-            System.out.println("Target at offset: " + iterationGetTargetOffset +
-                    " moved to offset: " + iterationInputTargetOffset);
-            System.out.println("Step 1 targets array\n" + Arrays.toString(postMissionTargetsArray));
-            //step 2 - restore overwritten targets from preMissionTargetsArray
-            targetData = getTargetData(preMissionTargetsArray,iterationGetTargetOffset);
-            inputTargetData(targetData,postMissionTargetsArray, iterationGetTargetOffset);
-            System.out.println("Restored target from offset: " + iterationGetTargetOffset);
-            System.out.println("Step 2 targets array\n" + Arrays.toString(postMissionTargetsArray));
-            //update counters
-            iterationGetTargetOffset++;
-            iterationInputTargetOffset++;
-            numberOfTargetsToMove--;
-        }
+        //step 1 - move newly added targets to the end of the array filled with empty records
+        int desiredTargetRecordOffset = (preMissionTargetsArray.length - TARGET_DATABLOCK_OFFSET) / TARGET_BLOCK_SIZE;
+        Byte[] targetData = getTargetData(postMissionTargetsArray, 0, targetsAddedAmount);
+        inputTargetData(targetData, postMissionTargetsArray, desiredTargetRecordOffset, targetsAddedAmount);
+        System.out.println(targetsAddedAmount + " target(s) from record offset: 0 moved to offset: " + desiredTargetRecordOffset);
+        System.out.println("Step 1 targets array\n" + Arrays.toString(postMissionTargetsArray));
+        //step 2 - restore overwritten targets from preMissionTargetsArray
+        int preMissionTargetsAmount = getNumberOfTargets(preMissionTargetsArray);
+        int targetsToRestoreAmount = Math.min(targetsAddedAmount, preMissionTargetsAmount);
+        targetData = getTargetData(preMissionTargetsArray, 0, targetsToRestoreAmount);//
+        inputTargetData(targetData, postMissionTargetsArray, 0, targetsToRestoreAmount);
+        System.out.println("Restored " + targetsToRestoreAmount + " target(s) from offset: 0");
+        System.out.println("Step 2 targets array\n" + Arrays.toString(postMissionTargetsArray));
         return postMissionTargetsArray;
     }
 
-    static Byte[] getTargetData (Byte[] targetsDataArray, int targetOffset) {
-        Byte[] result = new Byte[6];
-        for(int i=0; i<6;i++){
-            result[i] = targetsDataArray[2 + targetOffset * 6 + i];
+    static Byte[] getTargetData(Byte[] targetsDataArray, int targetOffset, int numberOfTargets) {
+        Byte[] result = new Byte[numberOfTargets * TARGET_BLOCK_SIZE];
+        for (int i = 0; i < TARGET_BLOCK_SIZE * numberOfTargets; i++) {
+            result[i] = targetsDataArray[TARGET_DATABLOCK_OFFSET + targetOffset * TARGET_BLOCK_SIZE + i];
         }
         return result;
     }
 
-    static void inputTargetData (Byte[] targetData, Byte[] destinationArray, int targetOffset) {
-        for(int i=0; i<6; i++) {
-            destinationArray[2 + targetOffset * 6 + i] = targetData[i];
+    static void inputTargetData(Byte[] targetData, Byte[] destinationArray, int targetOffset, int numberOfTargets) {
+        for (int i = 0; i < TARGET_BLOCK_SIZE * numberOfTargets; i++) {
+            destinationArray[TARGET_DATABLOCK_OFFSET + targetOffset * TARGET_BLOCK_SIZE + i] = targetData[i];
         }
     }
 
+    static int getNumberOfTargets(Byte[] array) {
+        return (array.length - TARGET_DATABLOCK_OFFSET) / TARGET_BLOCK_SIZE;
+    }
+
+    static int calculateNumberOfTargetsAdded(Byte[] preMissionArray, Byte[] postMissionArray) {
+        return (postMissionArray.length - preMissionArray.length) / TARGET_BLOCK_SIZE;
+    }
 }
