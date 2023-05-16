@@ -13,11 +13,11 @@ public class Main {
         String userInput = scanner.nextLine().toLowerCase();
         switch (userInput) {
             case "1" -> {
-                String fileName = FileNameBuilder.buildFileName();
+                String fileName = FileNameBuilder.buildFileName(scanner);
                 FileHandler.makeBackup(fileName, "backup" + fileName);
             }
             case "2" -> {
-                String fileName = FileNameBuilder.buildFileName();
+                String fileName = FileNameBuilder.buildFileName(scanner);
                 Byte[] targetsArray = FileHandler.fileToArray(fileName);
                 if (targetsArray.length == 0) {
                     System.out.println("Restart the program and enter correct data.");

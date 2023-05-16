@@ -6,8 +6,7 @@ import java.util.Scanner;
 class FileNameBuilder {
     private static StringBuilder sb = new StringBuilder(2);
 
-    static String buildFileName(){
-        Scanner scanner = new Scanner(System.in);
+    static String buildFileName(Scanner scanner){
         int slot=-1;
         while (sb.isEmpty()) {
             System.out.println("Which campaign is underway? [P]anama / [D]esert Storm / [K]orea.");
